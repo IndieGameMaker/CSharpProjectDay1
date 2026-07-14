@@ -16,5 +16,7 @@ class Program
         Console.WriteLine("레벨: " + level);      // "문자열" + 1  => "문자열" + "1" 
         Console.WriteLine("HP: " + hp);
         Console.WriteLine("사망여부:" + isDead);
+        
+        Console.WriteLine("이름: " + playerName + " 레벨: " + level + " HP: " + hp);
     }
 }
