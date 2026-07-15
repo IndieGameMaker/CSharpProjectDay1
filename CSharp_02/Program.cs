@@ -4,69 +4,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        int a = 10;
-        int b = 3;
+        // 전투 상황을 가정 : 공격력에서 방어력을 차감해서 데미지가 적용
+        float attackPower = 45f;    // 공격자의 공격력
+        float defence = 12f;        // 방어자의 방어력
+        float enemyHp = 100f;       // 적 캐릭터의 체력
+        
+        // 1) 실제 데미지 계산
+        float damage = attackPower - defence;
+        Console.WriteLine($"실제 데미지: {damage}");
+        
+        // 2) 적 체력 차감 (복합 대입연산자)
+        enemyHp -= damage;
+        Console.WriteLine($"적의 남은 HP: {enemyHp}");
 
-        // int a = 10, b = 3;
-        // 산술 연산자 (+ - / * %)
-        Console.WriteLine(a + b);
-        Console.WriteLine(a - b);
-        Console.WriteLine(a * b);
-        Console.WriteLine(a / b); // 정수 / 정수 ==> 소숫점 10/3 3.333
-
-        float c = 10.0f; // 10f;
-        float d = 3.0f;  // 3f;
-        Console.WriteLine(c / d);
-        
-        // 0 으로 나누는 경우 ==> 주의
-        Console.WriteLine(c / 0);
-        
-        // 나머지 연산 (Modulo)
-        Console.WriteLine(a % b);
-        
-        // 복합 대입 연산자 (게임개발시 많이 활용됨)
-        float hp = 100f;
-        
-        // 데미지 적용
-        hp -= 20f; // hp = hp - 20f;
-        // 물약 사용
-        hp += 15f; // hp = hp + 15f;
-        
-        Console.Clear();
-        Console.WriteLine($"회복 후 생명: {hp}");
-        
-        // 증감 연산자 (전치 , 후치)
-        int combo = 0;
-        combo++;  // combo = combo + 1; 콤보 1 증가
-        combo *= 2; // combo = combo * 2; // 콤보 수치를 2배
-        Console.Clear();
-        Console.WriteLine(combo);
-
-        int itemCount = 5;
-        Console.Clear();
-        Console.WriteLine(itemCount++);  // 아직 5 저장, 실행한 후에 +1
-        Console.WriteLine(itemCount);    // 6
-        
-        // 비교 연산자 ( > , < , >=, <=, ==, != )
-        int level = 30;
-
-        bool isOver30 = level != 30;  // != 다르다 여부를 확인 (같지 않는가?)
-        Console.Clear();
-        Console.WriteLine(isOver30);
-        
-        // 논리 연산자 
-        /*
-           멀티 라인 주석
-           &&  // a AND b : 둘 다 참일 경우에만 true
-           ||  // a || b
-           !   // NOT : true -> false , false -> true
-        */
-        
-        // 살아있고, 마나가 충분 하면 스킬 시전할 수 있는 지 여부
-        int mana = 40;
-        bool canCast = (hp > 0) && (mana >= 30);
-        Console.Clear();
-        Console.WriteLine(canCast);
-
+        // 3) 크리티컬 데미지 계산
+        bool isCritical = true;
+        float critDamage = damage * 2f;
+        enemyHp -= critDamage;
+        Console.WriteLine($"치명타 후 적의 체력: {enemyHp}");
     }
 }
