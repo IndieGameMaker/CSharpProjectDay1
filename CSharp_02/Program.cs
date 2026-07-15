@@ -61,5 +61,30 @@ class Program
         }
         
         // switch 구문 : 값에 따라서 분기 
+        int weaponType = 1; // 0: 양손검, 1: 활, 2: 지팡이
+
+        float weaponDamage = 0f;
+
+        switch (weaponType)
+        {
+            case 0: // 양손검
+                weaponDamage = 10f;
+                break;
+            
+            case 1: // 활
+                weaponDamage = 20f;
+                break;
+            
+            case 2: // 지팡이
+                weaponDamage = 5f;
+                break;
+            
+            default:
+                // 위에 해당사항이 없을 경우
+                weaponDamage = 2f;
+                break;
+        }
+        
+        Console.WriteLine($"무기 데미지: {weaponDamage}");
     }
 }
