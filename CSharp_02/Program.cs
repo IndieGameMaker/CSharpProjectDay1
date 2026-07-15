@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         // 전투 상황을 가정 : 공격력에서 방어력을 차감해서 데미지가 적용
-        float attackPower = 45f;    // 공격자의 공격력
+        float attackPower = 50f;    // 공격자의 공격력
         float defence = 12f;        // 방어자의 방어력
         float enemyHp = 100f;       // 적 캐릭터의 체력
         
@@ -22,5 +22,21 @@ class Program
         float critDamage = damage * 2f;
         enemyHp -= critDamage;
         Console.WriteLine($"치명타 후 적의 체력: {enemyHp}");
+        
+        // 4) 적 캐릭터 사망 여부 (비교 연산)
+        bool isDead = enemyHp <= 0;
+        Console.WriteLine($"적 사망여부: {isDead}");
+        
+        Console.Clear();
+        int score = 7;
+        Console.WriteLine(score % 2);
+
+        int gold = 100;
+        gold += 50; // 100 + 50 = 150
+        gold -= 30; // 150 - 30 = 120
+        gold *= 2;  // 120 * 2 = 240
+        
+        Console.WriteLine(gold);
+
     }
 }
