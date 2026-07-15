@@ -61,7 +61,7 @@ class Program
         }
         
         // switch 구문 : 값에 따라서 분기 
-        int weaponType = 1; // 0: 양손검, 1: 활, 2: 지팡이
+        int weaponType = 0; // 0: 양손검, 1: 활, 2: 지팡이
 
         float weaponDamage = 0f;
 
@@ -84,7 +84,25 @@ class Program
                 weaponDamage = 2f;
                 break;
         }
+
+        
         
         Console.WriteLine($"무기 데미지: {weaponDamage}");
+        
+        // switch (.NET 8.0 최신 문법)
+        // => goes to
+        // Lamda Expression (람다식) => 람다
+        // _ underscore
+        weaponDamage = weaponType switch
+        {
+            0 => 10f,
+            1 => 20f,
+            2 => 5f,
+            _ => 2f // default
+        };
+
+        
+        Console.WriteLine($"최신 문법 - 무기 데미지: {weaponDamage}");
+        
     }
 }
