@@ -34,5 +34,17 @@ class Program
         
         Console.Clear();
         Console.WriteLine($"회복 후 생명: {hp}");
+        
+        // 증감 연산자 (전치 , 후치)
+        int combo = 0;
+        combo++;  // combo = combo + 1; 콤보 1 증가
+        combo *= 2; // combo = combo * 2; // 콤보 수치를 2배
+        Console.Clear();
+        Console.WriteLine(combo);
+
+        int itemCount = 5;
+        Console.Clear();
+        Console.WriteLine(itemCount++);  // 아직 5 저장, 실행한 후에 +1
+        Console.WriteLine(itemCount);    // 6
     }
 }
