@@ -46,5 +46,27 @@ class Program
         Console.Clear();
         Console.WriteLine(itemCount++);  // 아직 5 저장, 실행한 후에 +1
         Console.WriteLine(itemCount);    // 6
+        
+        // 비교 연산자 ( > , < , >=, <=, ==, != )
+        int level = 30;
+
+        bool isOver30 = level != 30;  // != 다르다 여부를 확인 (같지 않는가?)
+        Console.Clear();
+        Console.WriteLine(isOver30);
+        
+        // 논리 연산자 
+        /*
+           멀티 라인 주석
+           &&  // a AND b : 둘 다 참일 경우에만 true
+           ||  // a || b
+           !   // NOT : true -> false , false -> true
+        */
+        
+        // 살아있고, 마나가 충분 하면 스킬 시전할 수 있는 지 여부
+        int mana = 40;
+        bool canCast = (hp > 0) && (mana >= 30);
+        Console.Clear();
+        Console.WriteLine(canCast);
+
     }
 }
