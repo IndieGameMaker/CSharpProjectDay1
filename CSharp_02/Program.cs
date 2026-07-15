@@ -23,5 +23,16 @@ class Program
         
         // 나머지 연산 (Modulo)
         Console.WriteLine(a % b);
+        
+        // 복합 대입 연산자 (게임개발시 많이 활용됨)
+        float hp = 100f;
+        
+        // 데미지 적용
+        hp -= 20f; // hp = hp - 20f;
+        // 물약 사용
+        hp += 15f; // hp = hp + 15f;
+        
+        Console.Clear();
+        Console.WriteLine($"회복 후 생명: {hp}");
     }
 }
