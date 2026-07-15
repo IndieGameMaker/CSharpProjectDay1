@@ -38,5 +38,28 @@ class Program
         
         Console.WriteLine(gold);
 
+        /*
+         * 조건문 (if / switch) : 만약 ~ 라면(이면) 이걸 처리해줘
+         * if / else
+         * if / else if
+         */
+        Console.Clear();
+        float hp = 25f;
+        hp += 30f;
+        
+        if (hp <= 0f)
+        {
+            Console.WriteLine("게임 오버");
+        }
+        else if (hp < 30f)
+        {
+            Console.WriteLine("체력저하!! 물약 필요함");
+        }
+        else
+        {
+            Console.WriteLine("정상 체력");
+        }
+        
+        // switch 구문 : 값에 따라서 분기 
     }
 }
