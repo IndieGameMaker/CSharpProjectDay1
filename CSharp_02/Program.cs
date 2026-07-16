@@ -1,4 +1,5 @@
-﻿namespace CSharp_02;
+﻿// ReSharper disable All
+namespace CSharp_02;
 
 class Program
 {
@@ -97,11 +98,12 @@ class Program
         {
             0 => 10f,
             1 => 20f,
+            // ReSharper disable once UnreachableSwitchArmDueToIntegerAnalysis
             2 => 5f,
             _ => 2f // default
         };
 
-        
+        Console.Clear();
         Console.WriteLine($"최신 문법 - 무기 데미지: {weaponDamage}");
         
     }
