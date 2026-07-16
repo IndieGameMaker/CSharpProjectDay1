@@ -12,7 +12,7 @@ class Program
     static void Main(string[] args)
     {
         // 몬스터의 레벨
-        int monsterLevel = 47;
+        int monsterLevel = 52;
         
         // 몬스터의 등급
         MonsterRank rank;
@@ -43,8 +43,8 @@ class Program
         {
             MonsterRank.Boss => 1000,
             MonsterRank.Elite => 300,
-            MonsterRank.Weak => 100,
-            _ => 30
+            MonsterRank.Normal => 100,
+            MonsterRank.Weak => 30
         };
         Console.WriteLine($"처치 보상: {reward} G");
     }
