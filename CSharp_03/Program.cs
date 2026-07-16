@@ -99,5 +99,30 @@ class Program
             Console.WriteLine(i);
         }
 
+        Console.Clear();
+        Console.WriteLine("=== 웨이브 시작 ===");
+        
+        // 고블린 3 생성
+        for (int i = 1; i <= 3; i++)
+        {
+            Console.WriteLine($"고블린 {i}번째 생성");
+        }
+        
+        // 보스 공격
+        Console.WriteLine("=== 보스전 ===");
+        bossHp = 100f;
+
+        float playerDamage = 30f;
+        // 턴 정보 저장
+        int turn = 1;
+
+        while (bossHp > 0f)
+        {
+            bossHp -= playerDamage;
+            if (bossHp < 0f) bossHp = 0f; // 음수 방지
+            Console.WriteLine($"{turn}턴 : 보스에게 {playerDamage} 만큼 데미지 입힘!(남은 체력:{bossHp})");
+            ++turn;
+        }
+
     }
 }
