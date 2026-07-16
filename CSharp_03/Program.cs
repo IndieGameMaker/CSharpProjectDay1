@@ -47,5 +47,32 @@ class Program
             MonsterRank.Weak => 30
         };
         Console.WriteLine($"처치 보상: {reward} G");
+        
+        // 반복문 (for/foreach/while/do~while)
+        /* for (시작점; 조건; 증감)
+           {
+                반복 실행할 로직;
+           }
+        */
+
+        Console.Clear();
+        // i => 0, 1, 2, 3, 4
+        for (int i = 0; i < 5 ; i++)
+        {
+            Console.WriteLine($" 적 {i+1}번째 소환");
+            // 적을 스폰시키는 로직...
+        }
+        
+        // while 문 - while (조건) {}
+        float bossHp = 100f;
+
+        while (bossHp > 0f)
+        {
+            bossHp -= 25f; // 매번 25씩 공격
+            //Console.WriteLine("보스 체력 :" + bossHp);
+            Console.WriteLine($"보스 체력 : {bossHp}");
+        }
+        
+        Console.WriteLine("보스 사망");
     }
 }
