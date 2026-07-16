@@ -74,5 +74,21 @@ class Program
         }
         
         Console.WriteLine("보스 사망");
+        
+        // foreach 문 - 배열(컬렉션)
+        Console.Clear();
+        string[] items = { "검", "마나", "물약" };
+
+        int index = 0;
+        foreach (string item in items)
+        {
+            Console.WriteLine($"{index++}: {item}");
+        }
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            Console.WriteLine($"{i} : {items[i]}");
+        }
+
     }
 }
