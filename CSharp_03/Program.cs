@@ -1,4 +1,7 @@
 ﻿// ReSharper disable All
+
+using System.Collections.Generic; // List 자료형을 사용하기 위해서 반드시 추가해야 하는 네임스페이스
+
 namespace CSharp_03;
 
 // 열거형 정의
@@ -121,8 +124,37 @@ class Program
             bossHp -= playerDamage;
             if (bossHp < 0f) bossHp = 0f; // 음수 방지
             Console.WriteLine($"{turn}턴 : 보스에게 {playerDamage} 만큼 데미지 입힘!(남은 체력:{bossHp})");
-            ++turn;
+            ++turn; // 다음 턴 설정
         }
+        
+        Console.WriteLine("보스 처리");
+        
+        // 배열과 컬렉션
+        // string[] items = { "검", "마나", "물약" };
 
+        Console.Clear();
+        Console.WriteLine(items[0]);
+        
+        // List : 크기를 자유롭게 변경
+        // 제너릭 문법 T 
+        // List<string> inventory = new();
+        List<string> inventory = new List<string>();
+        inventory.Add("대용량 물약");
+        inventory.Add("소용량 마나");
+        inventory.Add("대용량 마나");
+        
+        Console.Clear();
+        Console.WriteLine(inventory.Count);
+        Console.WriteLine(inventory[2]);
+        
+        // Dictionary 딕셔너리 자료형 : 키(Key)로 저장된 값(Value)을 검색이 가능
+        Dictionary<string, int> shop = new Dictionary<string, int>(); // new ();
+        // Indexer 방식으로 추가 (중복시 업데이트하고 오류 X)
+        shop["물약"] = 10;
+        shop["검"] = 2;
+        // Add 로 추가(중복이 발생하면 오류 발생)
+        shop.Add("마나", 3);
+        
+        Console.WriteLine(shop["물약"]);
     }
 }
