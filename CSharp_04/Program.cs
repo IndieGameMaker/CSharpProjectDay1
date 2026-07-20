@@ -66,8 +66,21 @@ class Program
         Console.WriteLine($"실제 입은 데미지량: {realDamage}");
         
         Console.WriteLine($"실제 데미지 : {GetDamage(100f, 80f)}");
+        
+        // 콘솔에서 입력처리
+        Console.Clear();
+        Console.Write("이름을 입력하세요: ");
+        string name = Console.ReadLine(); // 한줄로 입력받기
+        Console.WriteLine($"마을에 오신것을 환영합니다. {name}님");
+        
+        Console.Write("물약을 몇 개 구매하시겠습니까? :");
+        string input = Console.ReadLine();
+        int buyCount = int.Parse(input); // 문자열을 정수로 변환 int.Parse(문자열);
+        Console.WriteLine($"구매 물약의 총 가격은 {buyCount * 10} G 입니다.");
     }
 
+    #region 메서드 문법 형식
+    
     // 메서드 문법 형식
     // [static] [접근제한자] 반환타입 메서드_이름([매개변수])
     // {
@@ -111,4 +124,5 @@ class Program
         // float realDamage = damage - defense;
         // return realDamage;
     }
+    #endregion
 }
