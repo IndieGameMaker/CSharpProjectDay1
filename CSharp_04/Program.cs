@@ -75,8 +75,16 @@ class Program
         
         Console.Write("물약을 몇 개 구매하시겠습니까? :");
         string input = Console.ReadLine();
-        int buyCount = int.Parse(input); // 문자열을 정수로 변환 int.Parse(문자열);
-        Console.WriteLine($"구매 물약의 총 가격은 {buyCount * 10} G 입니다.");
+
+        if (int.TryParse(input, out int buyCount))
+        {
+            // int buyCount = int.Parse(input); // 문자열을 정수로 변환 int.Parse(문자열);
+            Console.WriteLine($"구매 물약의 총 가격은 {buyCount * 10} G 입니다.");
+        }
+        else
+        {
+            Console.WriteLine("숫자만 입력해 주세요.");
+        }
     }
 
     #region 메서드 문법 형식
