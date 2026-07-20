@@ -59,6 +59,7 @@ class Program
          */
         
         DisplayTitle();
+        TakeDamage(30f);
     }
 
     // 메서드 문법 형식
@@ -67,13 +68,32 @@ class Program
     //     실행할 로직;
     // }
     // private / public  / protected
-    
-    // void : 반환할 데이터가 없는 경우
     // C# 메서드 이름은 규약 : PascalCase (파스칼 케이스)
+    
+    // 1) void : 반환할 데이터가 없는 경우
     static void DisplayTitle()
     {
+        // 변수 이름 규약 : camelCase (카멜 케이스, 단봉 막타 표기법)
         string title = "Text RPG";
+        
         Console.Clear();
         Console.WriteLine(title);
+    }
+    
+    // 2) 매개변수(파라메터, Parameter)가 있는 경우
+    static void TakeDamage(float damage)
+    {
+        float defense = 10;
+        float realDamage = damage - defense;
+        Console.WriteLine($"{realDamage}의 데미지를 입었다.");
+    }
+    
+    // 3) 매개변수, 반환값이 있는 메서드 문법
+    static float GetDamage(float damage)
+    {
+        float defense = 10f;
+        float realDamage = damage - defense;
+        
+        return realDamage;
     }
 }
