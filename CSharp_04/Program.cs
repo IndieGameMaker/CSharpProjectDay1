@@ -60,6 +60,12 @@ class Program
         
         DisplayTitle();
         TakeDamage(30f);
+        
+        // 지역 변수(Local Variable)
+        float realDamage = GetDamage(50f);
+        Console.WriteLine($"실제 입은 데미지량: {realDamage}");
+        
+        Console.WriteLine($"실제 데미지 : {GetDamage(100f, 80f)}");
     }
 
     // 메서드 문법 형식
@@ -95,5 +101,14 @@ class Program
         float realDamage = damage - defense;
         
         return realDamage;
+    }
+    
+    // 4) 메서드 오버로딩 (Method Override)
+    // 매서드이 이름은 동일 , 파라메터 갯수를 다르게 설정하는 기능
+    static float GetDamage(float damage, float defense)
+    {
+        return damage - defense;
+        // float realDamage = damage - defense;
+        // return realDamage;
     }
 }
