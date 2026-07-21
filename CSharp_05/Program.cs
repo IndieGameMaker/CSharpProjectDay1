@@ -13,10 +13,18 @@
 internal class Player
 {
     // 필드(field) : 데이터
-    public string name;
+    private string _name;
     private float _hp; // 캡슐화
-    public float attackPower;
+    private float _attackPower;
 
+    // 생성자 (Constructor) : 객체를 생성할 때 초기값을 설정하는 문법
+    public Player(string name, float hp, float attackPower)
+    {
+        _name = name;
+        _hp = hp;
+        _attackPower = attackPower;
+    }
+    
     // 프로퍼티 방식 (Property: 속성)
     public float Hp
     {
@@ -53,7 +61,7 @@ internal class Player
     // 메서드(Method) : 로직 (동작)
     public void Attack()
     {
-        Console.WriteLine($"{name}가 {attackPower} 파워로 공격!");
+        Console.WriteLine($"{_name}가 {_attackPower} 파워로 공격!");
     }
 }
 
@@ -64,19 +72,17 @@ internal class Program
         Console.WriteLine("Hello, World!");
 
         // 힙 메모리에 객체(Instance)가 생성됨
-        Player hero = new Player();
-        // 객체의 필드값 정의 (변수 설정)
-        hero.name = "전사";  // 객체.필드
-        // hero.hp = 100f;
-        // hero.SetHp(100f);
-        hero.Hp = -90f; // set {}
-        
-        // 지역 변수 (Local Variable)
-        float hp = hero.Hp; // get {} // hero.GetHp();
-        Console.WriteLine(hp);
-        
-        hero.attackPower = 30f;
+        Player hero = new Player("전사", 100f, 30f);
+
+        hero.Hp = 90f;
+        Console.WriteLine(hero.Hp);
         // 메소드 호출
         hero.Attack();
+
+        Player wizard = new Player("마법사", 80f, 10f);
+        wizard.Hp = 70f;
+        Console.WriteLine(wizard.Hp);
+        // 메소드 호출
+        wizard.Attack();
     }
 }
