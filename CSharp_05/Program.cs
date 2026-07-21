@@ -74,11 +74,13 @@ public enum ItemType
 
 class Item
 {
+    // 데이터 은익화 / 캡슐화
     private ItemType _itemType;
     private string _name;
     private string _description;
     private int _cost;
     
+    // 프로퍼티 외부에 공개하는 속성
     public ItemType ItemType { get => _itemType; }
     public string Name { get => _name; }
     public string Description { get => _description; }
@@ -92,6 +94,10 @@ class Item
         _description = description;
         _cost = cost;
     }
+    
+    // 메서드
+    // 판매
+    // 사용
 }
 
 internal class Program
@@ -109,7 +115,7 @@ internal class Program
 
         foreach (var item in items)
         {
-            Console.WriteLine($"아이템 타입: {item.}");
+            Console.WriteLine($"아이템 타입: {item.ItemType}, 아이템명: {item.Name}, 비용: {item.Cost}");
         }
         
         return;
