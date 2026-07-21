@@ -65,20 +65,68 @@ internal class Player
     }
 }
 
+public enum ItemType
+{
+    Consumable,
+    Weapon,
+    Armor
+}
+
+class Item
+{
+    private ItemType _itemType;
+    private string _name;
+    private string _description;
+    private int _cost;
+    
+    public ItemType ItemType { get => _itemType; }
+    public string Name { get => _name; }
+    public string Description { get => _description; }
+    public int Cost { get => _cost; }
+    
+    // 생성자
+    public Item(ItemType itemType, string name, string description, int cost)
+    {
+        _itemType = itemType;
+        _name = name;
+        _description = description;
+        _cost = cost;
+    }
+}
+
 internal class Program
 {
     static void Main(string[] args)
     {
+
+        List<Item> items = new List<Item>();
+        
+        // 물약 생성
+        Item potion = new Item(ItemType.Consumable, "물약", "Hp 10% 회복", 100);
+        items.Add(potion);
+        Item sword = new Item(ItemType.Weapon, "검", "일반검", 200);
+        items.Add(sword);
+
+        foreach (var item in items)
+        {
+            Console.WriteLine($"아이템 타입: {item.}");
+        }
+        
+        return;
+        
         Console.WriteLine("Hello, World!");
 
         // 힙 메모리에 객체(Instance)가 생성됨
+        // 전사 캐릭터
         Player hero = new Player("전사", 100f, 30f);
-
-        hero.Hp = 90f;
-        Console.WriteLine(hero.Hp);
+        
+        hero.Hp = 90f; // 직접 초기값을 설정
+        
+        Console.WriteLine($"HP:{hero.Hp}");
         // 메소드 호출
         hero.Attack();
 
+        // 마법사 캐릭터
         Player wizard = new Player("마법사", 80f, 10f);
         wizard.Hp = 70f;
         Console.WriteLine(wizard.Hp);
