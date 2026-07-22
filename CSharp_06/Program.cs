@@ -23,12 +23,48 @@
  * - 추상화 (Abstraction) : 복잡성 줄이기
  */
 
-class 
+class Character
+{
+    // 필드(Field) 
+    private string _name;
+    private int _hp;
+    private int _attackPower;
+    
+    // 프로퍼티(Property)
+    public string Name { get => _name; set => _name = value; }
+    public int Hp { get => _hp; set => _hp = value; }
+    public int AttackPower
+    {
+        get => _attackPower;
+        set => _attackPower = value;
+    }
+    
+    // 생성자(Constructor) - 객체가 생성될 때 호출
+    public Character(string name, int hp, int attackPower)
+    {
+        _name = name;
+        _hp = hp;
+        _attackPower = attackPower;
+    }
+    
+    // 메서드(Method) - 캐릭터의 행동(동사)
+    public void Attack(Character target)
+    {
+        Console.WriteLine($"{Name}가 {AttackPower} 데미지로 {target.Name}을 공격합니다.");
+    }
+}
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        // 객체 생성
+        Character warrior = new Character("전사", 100, 30);
+        Character goblin = new Character("고블린", 70, 20);
+        
+        // 메서드 호출
+        warrior.Attack(goblin);
+
+        goblin.Attack(warrior);
     }
 }
