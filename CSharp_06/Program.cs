@@ -116,6 +116,24 @@ class Wizard : Character
         _mana = mana;
         Console.WriteLine($"마법사 '{_name}' 생성 (마나: {_mana}/{_maxMana})");
     }
+    
+    // 마법사 고유 스킬
+    public void Fireball(Character target)
+    {
+        int manaCost = 30;
+
+        if (_mana <= manaCost)
+        {
+            Console.WriteLine($"마나가 부족합니다.! (필요: {manaCost}, 현재: {_mana})");
+            return;
+        }
+        
+        _mana -= manaCost;
+        // 기존 공격데미지의 2배를 적용
+        int magicDamage = _attackPower * 2;
+        Console.WriteLine($"{_name}의 파이어볼 시전! (데미지 : {magicDamage}/ 남은 마나 : {_mana})");
+        target.TakeDamage(magicDamage);
+    }
 }
 
 
@@ -125,16 +143,23 @@ class Program
     {
         // 객체 생성 (Instance)
         // Character warrior = new Character("전사", 100, 30);
-        Character goblin = new Character("고블린", 100, 20);
         
         // 메서드 호출
         // warrior.Attack(goblin);
         // goblin.Attack(warrior);
         
         // Warrior 객체 생성
+        Character goblin = new Character("고블린", 100, 20);
         Warrior warrior = new Warrior("엘리트전사", 200, 50, 30);
 
         warrior.TakeDamage(100);
         warrior.ShieldSkill(goblin);
+        
+        // 마법사 객체 생성
+        Wizard wizard = new Wizard(name: "법사", 
+                                    hp: 80, 
+                                    attackPower: 50, 
+                                    mana: 100);
+        
     }
 }
