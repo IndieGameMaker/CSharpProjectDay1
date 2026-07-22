@@ -58,6 +58,12 @@ class Character
     {
         Console.WriteLine($"{Name}가 {AttackPower} 데미지로 {target.Name}을 공격합니다.");
     }
+
+    public void TakeDamage(int damage)
+    {
+        _hp -= damage;
+        Console.WriteLine($"{_name} 체력: {_hp}");
+    }
 }
 
 // 자식 클래스 : 전사 : 방어력
