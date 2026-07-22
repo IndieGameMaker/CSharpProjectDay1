@@ -90,6 +90,13 @@ class Warrior : Character
         
         base.TakeDamage(reducedDamage);
     }
+    
+    // 전사만의 고유 스킬
+    public void ShieldSkill(Character target)
+    {
+        Console.WriteLine($"{_name}의 방태 스킬");
+        target.TakeDamage(_attackPower + _defense);
+    }
 }
 
 
@@ -99,7 +106,7 @@ class Program
     {
         // 객체 생성 (Instance)
         // Character warrior = new Character("전사", 100, 30);
-        // Character goblin = new Character("고블린", 70, 20);
+        Character goblin = new Character("고블린", 100, 20);
         
         // 메서드 호출
         // warrior.Attack(goblin);
@@ -109,5 +116,6 @@ class Program
         Warrior warrior = new Warrior("엘리트전사", 200, 50, 30);
 
         warrior.TakeDamage(100);
+        warrior.ShieldSkill(goblin);
     }
 }
