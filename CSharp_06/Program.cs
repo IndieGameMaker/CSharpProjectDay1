@@ -94,8 +94,27 @@ class Warrior : Character
     // 전사만의 고유 스킬
     public void ShieldSkill(Character target)
     {
-        Console.WriteLine($"{_name}의 방태 스킬");
+        Console.WriteLine($"{_name}의 방패 스킬");
         target.TakeDamage(_attackPower + _defense);
+    }
+}
+
+// 자식 클래스 : 마법사 : mana
+class Wizard : Character
+{
+    // 마법사만의 고유 필드 
+    private int _mana;
+    private int _maxMana;
+    
+    // 프로퍼티
+    public int Mana => _mana; // getter
+    
+    // 생성자
+    public Wizard(string name, int hp, int attackPower, int mana) : base(name, hp, attackPower)
+    {
+        _maxMana = mana;
+        _mana = mana;
+        Console.WriteLine($"마법사 '{_name}' 생성 (마나: {_mana}/{_maxMana})");
     }
 }
 
