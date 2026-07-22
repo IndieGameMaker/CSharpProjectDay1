@@ -72,7 +72,7 @@ class Warrior : Character
     public Warrior(string name, int hp, int attackPower, int defense) : base(name, hp, attackPower)
     {
         _defense = defense;
-        Console.WriteLine($"전사 '{name}' 생성 (방어력: {_defense})");
+        Console.WriteLine($"전사 '{name}' 생성 (HP: {_hp} 방어력: {_defense})");
     }
 }
 
