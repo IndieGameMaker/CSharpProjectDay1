@@ -160,12 +160,13 @@ class Program
                                     hp: 80, 
                                     attackPower: 50, 
                                     mana: 100);
-
         goblin.Hp = 100;
+
         wizard.Fireball(goblin);
         wizard.Fireball(goblin);
         wizard.Fireball(goblin);
         wizard.Fireball(goblin);
+        
         
     }
 }
