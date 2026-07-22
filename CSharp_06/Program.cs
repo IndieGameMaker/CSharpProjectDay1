@@ -23,12 +23,18 @@
  * - 추상화 (Abstraction) : 복잡성 줄이기
  */
 
+
+// 전사 : 방어력
+// 법사 : 마나
+// 궁수 : 화살 갯수
+
+// 부모 클래스 (Base Class , Mother Class)
 class Character
 {
     // 필드(Field) 
-    private string _name;
-    private int _hp;
-    private int _attackPower;
+    protected string _name; // protected : 자신과, 상속받은 자식 클래스에서 접근허용하는 접근제한자.
+    protected int _hp;
+    protected int _attackPower;
     
     // 프로퍼티(Property)
     public string Name { get => _name; set => _name = value; }
@@ -54,17 +60,36 @@ class Character
     }
 }
 
+// 자식 클래스 : 전사 : 방어력
+class Warrior : Character
+{
+    // 자신만의 스텟(속성)
+    private int _defense;
+
+    public int Defense => _defense; // get
+
+    // 생성자
+    public Warrior(string name, int hp, int attackPower, int defense) : base(name, hp, attackPower)
+    {
+        _defense = defense;
+        Console.WriteLine($"전사 '{name}' 생성 (방어력: {_defense})");
+    }
+}
+
+
 class Program
 {
     static void Main(string[] args)
     {
-        // 객체 생성
-        Character warrior = new Character("전사", 100, 30);
-        Character goblin = new Character("고블린", 70, 20);
+        // 객체 생성 (Instance)
+        // Character warrior = new Character("전사", 100, 30);
+        // Character goblin = new Character("고블린", 70, 20);
         
         // 메서드 호출
-        warrior.Attack(goblin);
-
-        goblin.Attack(warrior);
+        // warrior.Attack(goblin);
+        // goblin.Attack(warrior);
+        
+        // Warrior 객체 생성
+        Warrior warrior = new Warrior("엘리트전사", 200, 50, 30);
     }
 }
