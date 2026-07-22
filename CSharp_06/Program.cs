@@ -59,7 +59,8 @@ class Character
         Console.WriteLine($"{Name}가 {AttackPower} 데미지로 {target.Name}을 공격합니다.");
     }
 
-    public void TakeDamage(int damage)
+    // 상속후 재정의 virtual 키워드 ; 가상 메서드
+    public virtual void TakeDamage(int damage)
     {
         _hp -= damage;
         Console.WriteLine($"{_name} 체력: {_hp}");
@@ -80,6 +81,15 @@ class Warrior : Character
         _defense = defense;
         Console.WriteLine($"전사 '{name}' 생성 (HP: {_hp} 방어력: {_defense})");
     }
+
+    // override : 부모 클래스에서 정의된 메서드를 자식 클래스에서 기능 추가할 때 사용
+    public override void TakeDamage(int damage)
+    {
+        int reducedDamage = damage - _defense;
+        Console.WriteLine($"{_name}의 방어력: {_defense}");
+        
+        base.TakeDamage(reducedDamage);
+    }
 }
 
 
@@ -97,5 +107,7 @@ class Program
         
         // Warrior 객체 생성
         Warrior warrior = new Warrior("엘리트전사", 200, 50, 30);
+
+        warrior.TakeDamage(100);
     }
 }
