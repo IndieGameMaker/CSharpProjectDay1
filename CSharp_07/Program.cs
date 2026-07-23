@@ -54,7 +54,12 @@ class Program
             Console.WriteLine("드래곤 입니다."); 
             e.Attack();
         }
-        
+
+        // 패턴 매칭 (확인과 변환을 한번에 처리)
         if (e is Dragon d)
+        {
+            d.Fly();
+            d.Attack();
+        }
     }
 }
