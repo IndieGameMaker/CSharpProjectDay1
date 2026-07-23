@@ -1,5 +1,28 @@
 ﻿namespace CSharp_07;
 
+// 인터페이스 정의 (선언)
+interface IDamageable
+{
+    void TakeDamage(int damage);   // 구현부(로직), 구현체없이 "뼈대만" 선언 
+}
+
+interface IAttackable
+{
+    void Attack();
+}
+
+class Player : IDamageable, IAttackable
+{
+    public int Hp { get; set; }
+    
+    // 인테페이스에서 요구한 메서드를 반드시 구현해야 함.
+    public void TakeDamage(int damage)
+    {
+        Hp -= damage;
+        // 실제 로직 작성
+        Console.WriteLine($"플레이어 HP: {Hp}");
+    }}
+
 // abstract 클래스(추상 클래스) : 로직을 정의할 수 없고 , 상속받은 클래스에서 로직을 구현하도록 강제
 abstract class Enemy
 {
@@ -62,6 +85,7 @@ class Program
     static void Main(string[] args)
     {
         Enemy e = new Dragon("드래곤", 1000);
+        Enemy g = new Goblin("고블린", 50);
 
         // is : ~ 인가? ~타입인가? : bool
 
@@ -78,7 +102,16 @@ class Program
             d.Attack();
         }
         
-        // as: a as b : 변환시도, 타입이 다르면 
-        
+        // as: a as b : 변환시도, 타입이 다르면 null을 반환
+        // Goblin goblin = e as Goblin;
+        Goblin goblin = g as Goblin;
+        if (goblin == null)
+        {
+            Console.WriteLine("고블린이 아님");
+        }
+        else
+        {
+            goblin.Steal();
+        }
     }
 }
