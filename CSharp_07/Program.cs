@@ -41,6 +41,22 @@ class Dragon : Enemy
     }
 }
 
+class Goblin : Enemy
+{
+    public Goblin(string name, int hp) : base(name, hp) {}
+    
+    // 추상 메소드 구현
+    public override void Attack()
+    {
+        Console.WriteLine("고블린 공격!");
+    }
+
+    public void Steal()
+    {
+        Console.WriteLine("도둑질");
+    }
+}
+
 class Program
 {
     static void Main(string[] args)
@@ -61,5 +77,8 @@ class Program
             d.Fly();
             d.Attack();
         }
+        
+        // as: a as b : 변환시도, 타입이 다르면 
+        
     }
 }
