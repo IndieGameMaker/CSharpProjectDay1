@@ -1,9 +1,21 @@
 ﻿namespace CSharp_07;
 
+/*
+ * abstract vs interface
+ * 하나만 상속 vs 여러개 상속 가능
+ * 필드 허용  vs 필드 허용 X, 프로퍼티 O
+ *
+ * Dragon : Enemy
+ * Player : Character, IDamageable, IAttacable
+ */
+
+
 // 인터페이스 정의 (선언)
 interface IDamageable
 {
-    void TakeDamage(int damage);   // 구현부(로직), 구현체없이 "뼈대만" 선언 
+    float Hp { get;} // 프로퍼티 선언 가능함
+    bool IsDead { get; }
+    void TakeDamage(int damage); // 구현부(로직), 구현체없이 "뼈대만" 선언 
 }
 
 interface IAttackable
@@ -11,23 +23,38 @@ interface IAttackable
     void Attack();
 }
 
+interface IFlyable
+{
+    void Fly();
+}
+
 class Player : IDamageable, IAttackable
 {
     public int Hp { get; set; }
-    
+    public bool IsDead { get; }
+
     // 인테페이스에서 요구한 메서드를 반드시 구현해야 함.
+    float IDamageable.Hp { get; }
+
     public void TakeDamage(int damage)
     {
         Hp -= damage;
         // 실제 로직 작성
         Console.WriteLine($"플레이어 HP: {Hp}");
-    }}
+    }
+
+    public void Attack()
+    {
+        Console.WriteLine("플레이어 공격");
+    }
+}
 
 // abstract 클래스(추상 클래스) : 로직을 정의할 수 없고 , 상속받은 클래스에서 로직을 구현하도록 강제
-abstract class Enemy
+abstract class Enemy : IDamageable, IAttackable
 {
     public string Name { get; set; } // Auto Property
     public int Hp { get; set; }
+    public bool IsDead { get; }
 
     public Enemy(string name, int hp)
     {
@@ -38,6 +65,8 @@ abstract class Enemy
     // abstract 메서드(추상 메서드) 선언만 가능
     public abstract void Attack();
 
+    float IDamageable.Hp { get; }
+
     public void TakeDamage(int damage)
     {
         Hp -= damage;
@@ -45,7 +74,10 @@ abstract class Enemy
     }
 }
 
-class Dragon : Enemy
+// C# 언어 설계 철학
+// - 다중 상속을 허용하지 않는다.
+// - 단일 클래스로 부터 상속 받는다.
+class Dragon : Enemy, IFlyable
 {
     public Dragon(string name, int hp) : base(name, hp)
     {
@@ -60,9 +92,8 @@ class Dragon : Enemy
 
     public void Fly()
     {
-        Console.WriteLine("비행중...");
-    }
-}
+        Console.WriteLine("비행 중...");
+    }}
 
 class Goblin : Enemy
 {
@@ -113,5 +144,11 @@ class Program
         {
             goblin.Steal();
         }
+
+        Console.Clear();
+        
+        Player warrior = new Player();
+        warrior.TakeDamage(10);
+        warrior.Attack();
     }
 }
